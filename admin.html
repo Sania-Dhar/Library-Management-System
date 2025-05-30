@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <HttpContext class="Current"></HttpContext>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="user.css">
+    <title>Admin - Add Book Page</title>
+</head>
+
+<body>
+    <a href="home admin.html" class="back-btn">
+        <img src="images/arrow-left.svg" alt="arrow" width="25px">
+        <p>Back to Home</p>
+    </a>
+    <div class="btns">
+        <button class="UD"><a
+                href="https://docs.google.com/spreadsheets/d/1lysY8cKFHMQI4cK_7DfzZ9TAYjjtlE7_G8Od28CJ16w/edit?usp=sharing"
+                target="_blank">User Database</a></button>
+
+        <button class="BD"><a
+                href="https://docs.google.com/spreadsheets/d/1SeoTOv29Xh5I-YgdFqGJNknyIGD8cfNhbugxY1TKygU/edit?usp=sharing"
+                target="_blank">Book Database</a></button>
+
+        <button class="UD" id="signout" target="_blank"><a href="#">Sign Out</a></button>
+    </div>
+
+    <div class="top">
+        <div class="profile-details">
+            <div class="profile">
+                <img src="images/girl.png" alt="" class="profile-pic">
+            </div>
+            <h1 class="name" id="userName"></h1>
+        </div>
+    </div>
+    <div class="bottom">
+        <h2>Add Books</h2>
+        <form method="post" name="google-sheet" id="image-upload-form">
+            <div class="left">
+                <label for="book-name">Name of the Book</label>
+                <input type="text" placeholder="Enter Book Name" name="Name-of-the-Book" id="book-name" required>
+                <label for="author-name">Author</label>
+                <input type="text" placeholder="Enter Author name" name="Author" id="author-name" required>
+                <label for="book-catagory">Chose book category</label>
+                <select name="Catagory" id="book-catagory" required>
+                    <option value="">Chose Book Catagory</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Non-Fiction">Non Fiction</option>
+                    <option value="Academic">Academic</option>
+                    <option value="Children">Children</option>
+                </select>
+            </div>
+            <div class="right">
+                <label for="total-book">Total Number of Books</label>
+                <input type="number" name="Total-Number-of-Books" id="total-book" required>
+
+                <label for="book-image">Upload Book Image URL</label>
+                <input type="text" id="book-image-url" name="Image" accept=".png, .jpg, .jpeg" required>
+                <button type="submit" id="submit">Add Book</button>
+                <!--<input type="submit" value="Add Book" id="submit" name="register">-->
+            </div>
+        </form>
+    </div>
+    <footer>
+        Created with ❤️ by Sania Sanjukta Saptarshi Saswata Sayan
+    </footer>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzh8mN_Spksw_HyLkkNz-BlMUlH0s2CNnj8xCNCHTrqkOiFJQa44JhObBBqQ_75Dkl5/exec'
+        const form = document.forms['google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Book Added!"))
+                .catch(error => console.error('Error!', error.message))
+        })        
+    </script>
+
+    <script>
+        document.getElementById('image-upload-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var imageUrl = document.getElementById('book-image-url').value;
+            uploadImageToSpreadsheet(imageUrl);
+        });
+
+        function uploadImageToSpreadsheet(imageUrl) {
+            var scriptUrl = 'https://script.google.com/macros/s/AKfycbyI9BbPt-hxZcG_BOe6bOh9FgEftXcEk78mM5Wmg6pIeV4AUQiy4cT83M5SjAGO6KaA/exec'; // Replace with the URL of your Google Apps Script web app
+            var formData = {
+                'imageUrl': imageUrl
+            };
+
+            fetch(scriptUrl, {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Image uploaded successfully');
+                    } else {
+                        console.error('Failed to upload image:', response.statusText);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error uploading image:', error);
+                });
+        }
+    </script>
+
+    <script>
+        var userName = sessionStorage.getItem("Name");
+        var userNameElement = document.getElementById("userName");
+        if (userName) {
+            userNameElement.textContent = userName;
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('signout').addEventListener('click', function () {
+                window.location.replace("signin.html");
+            });
+        });
+        function disableBack() { window.history.forward(); }
+        setTimeout("disableBack()", 0);
+        window.onunload = function () { null };
+    </script>
+</body>
+
+</html>

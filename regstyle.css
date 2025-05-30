@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    /* color */
+
+    --color1: #7f56da;
+    --color2: #F3F4F8;
+    --color-gray: hsl(0, 0%, 50%);
+    --color-black: #000;
+    --color-white: #fff;
+
+    /* Font size */
+
+    --font1: 45px;
+    --font2: 27.81px;
+    --font3: 17.19px;
+
+    /* Font Weight */
+
+    --font-weight1: 800;
+    --font-weight2: 600;
+    --font-weight3: 400;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    display: flex;
+}
+
+.left {
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
+h1 {
+    font-size: var(--font1);
+    color: var(--color1);
+    font-weight: var(--font-weight1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font3);
+    font-weight: var(--font-weight3);
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input,
+button,
+select {
+    margin-bottom: 24px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    border: none;
+    font-size: var(--font3);
+}
+
+input,
+select {
+    border: 1px solid var(--color-gray);
+}
+
+select {
+    color: var(--color-gray);
+}
+
+.pass {
+    margin-bottom: 24px;
+    border: 1px solid var(--color-gray);
+    border-radius: 5px;
+    display: flex;
+}
+
+.pass input {
+    border: none;
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.pass img {
+    margin: 12px;
+}
+
+#forgotpass {
+    text-align: right;
+    margin-bottom: 24px;
+}
+
+#submit {
+    background-color: var(--color1);
+    color: var(--color-white);
+    font-weight: var(--font-weight2);
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    color: var(--color1);
+    text-decoration: none;
+    font-weight: var(--font-weight1);
+}
+
+.right {
+    width: 50%;
+    height: 100vh;
+    background: url(images/girl.png) var(--color2);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.logo {
+    color: var(--color1);
+    font-size: 50px;
+    font-style: italic;
+    font-weight: 900;
+    line-height: 100%;
+    letter-spacing: -1px;
+    margin-top: 75px;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(500px) scale(.2);
+    }
+
+    100% {
+        transform: translateX(0px) scale(1);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(-500px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes expand {
+    0% {
+        transform: translateX(1400px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.form,
+.logo {
+    animation: slideUp 1.5s ease-in-out forwards;
+}

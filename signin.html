@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin Page</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Signin Page</title>
+        <link rel="stylesheet" href="regstyle.css">
+    </head>
+
+    <body>
+        <div class="left">
+            <div class="form">
+                <h1>Welcome back!</h1>
+                <form id="loginForm">
+                    <label for="user-type">Who you are?</label>
+                    <select name="user-type" id="user-type" required>
+                        <option value="">Select user type</option>
+                        <option value="student">Student</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Enter your Email" name="Email" id="email" required>
+                    <label for="password">Password</label>
+                    <div class="pass"><input type="password" placeholder="Enter Password" name="Password" required
+                            id="password">
+                        <img src="images/eye-crossed.svg" alt="img" width="16px" id="eyeicon">
+                    </div>
+                    <a href="forgotpassword.html" id="forgotpass">Forgot Password?</a>
+                    <button type="submit" id="submit">Sign in</button>
+                    <p>Don't have a Account? <a href="index.html">Register Now</a></p>
+                </form>
+            </div>
+        </div>
+        <div class="right">
+            <p class="logo">Book <br>Heaven Library</p>
+        </div>
+
+        <script>
+            //password toggle       
+            let eyeicon = document.getElementById("eyeicon");
+            let password = document.getElementById("password");
+            eyeicon.onclick = function () {
+                if (password.type == "password") {
+                    password.type = "text";
+                    eyeicon.src = "images/eye.svg";
+                }
+                else {
+                    password.type = "password";
+                    eyeicon.src = "images/eye-crossed.svg";
+                }
+            }
+        </script>
+
+        <script>
+            //login system
+            document.getElementById('loginForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+                var usertype = document.getElementById('user-type').value;
+                fetch('https://script.google.com/macros/s/AKfycbzwIna0tgAJCUVf5xmmC1FYbQezghNaFart_CqhjekC9zro330Cj-jot98w5baGBS_flA/exec')
+                    .then(response => response.json())
+                    .then(data => {
+                        var authenticated = data.some(entry => entry.Email === email && entry.Password === password && entry.Type === usertype);
+                        if (!authenticated) {
+                            alert("ACCESS DENIED!! Invalid data");
+                        }
+                        else {
+                            if (email === 'saniadhar2005@gmail.com') {
+                                var Name = 'Sania Dhar';
+                                sessionStorage.setItem("Name", Name);
+                            }
+                            else if (email === 'sanjuktaguha@gmail.com') {
+                                var Name = 'Sanjukta Guha';
+                                sessionStorage.setItem("Name", Name);
+                            }
+                            else if (email === 'saswatag08@gmail.com') {
+                                var Name = 'Saswata Ghosh';
+                                sessionStorage.setItem("Name", Name);
+                            }
+                            else if (email === 'debabrata@gmail.com') {
+                                var Name = 'Debabrata Bhattacharya';
+                                sessionStorage.setItem("Name", Name);
+                            }
+                            else if (email === 'ssayansingha@gmail.com') {
+                                var Name = 'Sayan Singha';
+                                sessionStorage.setItem("Name", Name);
+                            }
+                            else if (email === 'saptarshidutta917@gmail.com') {
+                                var Name = 'Saptarshi Dutta';
+                                sessionStorage.setItem("Name", Name);
+                            }
+                            if (usertype === 'admin') {
+                                window.location.href = 'admin.html';
+                            }
+                            else if (usertype === 'student') {
+                                window.location.href = 'home user.html';
+                            }
+                        }
+                    }).catch(error => { alert("Error fetching data!"); });
+            });
+        </script>
+
+        <script>
+            /*function disableBack() { window.history.forward(); }
+            setTimeout("disableBack()", 0);
+            window.onunload = function () { null };*/
+        </script>
+    </body>
+
+    </html>
+</body>
+
+</html>
