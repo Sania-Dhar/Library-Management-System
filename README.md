@@ -1,7 +1,7 @@
 # 📚 Library Management System
 A responsive front-end web project built using HTML, CSS, and JavaScript, simulating a basic library system with role-based access and Google Sheets as a lightweight backend.
 
-# ✨ Features
+## ✨ Features
 <ul>
   <li>User Registration & Login (Student & Admin roles)</li>
   <li>Home Page with 4 categories of books displayed as thumbnails</li>
@@ -13,8 +13,8 @@ A responsive front-end web project built using HTML, CSS, and JavaScript, simula
 
 ⚙️ This project uses Google Apps Script to connect forms with Google Sheets for a simple backend simulation.
 
-# 📁 Tech Stack
+## 📁 Tech Stack
 HTML, CSS, JavaScript
 Google Sheets (via Apps Script) for data storage
 
-## Created with love by Sania Dhar, Sanjukta Guha, Saptarshi Dutta, Saswata Ghosh, and Sayan Singha
+#### Created with love by Sania Dhar, Sanjukta Guha, Saptarshi Dutta, Saswata Ghosh, and Sayan Singha
