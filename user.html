@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="user.css">
+    <title>User Details</title>
+</head>
+
+<body>
+    <a href="home user.html" class="back-btn">
+        <img src="images/arrow-left.svg" alt="arrow" width="25px">
+        <p>Back to Home</p>
+    </a>
+    <div class="btns">          
+        <button class="UD" id="signout" target="_blank"><a href="#">Sign Out</a></button>    
+    </div>
+    <div class="top">
+        <div class="profile-details">
+            <div class="profile">
+                <img src="images/girl.png" alt="" class="profile-pic">
+            </div>
+            <h1 class="name" id="userName"></h1>
+        </div>
+    </div>
+    <div class="bottom">
+        <h2>Book Details</h2>
+        <table cellspacing="25px" class="table" id="table">
+            <tr>
+                <th>ID</th>
+                <th>Name Of The Book</th>
+                <th>Author</th>
+                <th>Issue Date</th>
+                <th>Due Date</th>
+            </tr>
+            <tr class="row1">
+                <td id="id">92802</td>
+                <td id="bookname">Eat The Frog</td>
+                <td id="author">Brian Tracy</td>
+                <td id="issue date">Tue Apr 30 2024</td>
+                <td id="return date">Wed May 01 2024</td>
+            </tr>
+            <tr class="row2">
+                <td id="id">5950</td>
+                <td id="bookname">Atomic Habits
+                <td id="author">James Clear</td>
+                <td id="issue date">Wed May 01 2024</td>
+                <td id="return date">Tue Apr 30 2024</td>
+            </tr>
+            <tr class="row3">
+                <td id="id">28991</td>
+                <td id="bookname">Ikigai</td>
+                <td id="author">Hector Garcia</td>
+                <td id="issue date">Wed May 01 2024</td>
+                <td id="return date">Wed May 08 2024</td>
+            </tr>
+        </table>
+    </div>
+    <footer>
+        Created with ❤️ by Sania Sanjukta Saptarshi Saswata Sayan
+    </footer>
+
+    <script>
+        var userName = sessionStorage.getItem("Name");
+        var userNameElement = document.getElementById("userName");
+        if(userName)
+        {
+            userNameElement.textContent = userName;
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('signout').addEventListener('click', function() {
+        window.location.replace("signin.html");
+        });
+    });
+    function disableBack() { window.history.forward(); }
+        setTimeout("disableBack()", 0);
+        window.onunload = function () { null };
+    </script>
+</body>
+</html>
