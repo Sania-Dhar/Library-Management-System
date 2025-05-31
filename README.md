@@ -1,6 +1,7 @@
 # 📚 Library Management System
 A responsive front-end web project built using HTML, CSS, and JavaScript, simulating a basic library system with role-based access and Google Sheets as a lightweight backend.
-
+## 🌐 Live Link
+<a href="https://sania-dhar.github.io/Library-Management-System/">Click here to view.</a>
 ## ✨ Features
 <ul>
   <li>User Registration & Login (Student & Admin roles)</li>
